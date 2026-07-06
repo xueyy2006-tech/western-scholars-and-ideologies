@@ -101,7 +101,6 @@ export default function KnowledgeTree() {
           style: { stroke: '#94a3b8', strokeWidth: 1.5 },
           animated: false,
         }}
-        proOptions={{ hideAttribution: true }}
       >
         <Background color="#94a3b8" gap={20} size={1} />
         <Controls className="!rounded-lg !shadow-md !border-gray-200 dark:!border-gray-700" />
