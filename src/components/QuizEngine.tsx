@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle2, XCircle, ArrowRight, RotateCcw, ArrowLeftRight, Star } from 'lucide-react'
+import { CheckCircle2, XCircle, ArrowRight, RotateCcw, ArrowLeftRight, Star, LogOut } from 'lucide-react'
 import { allQuizQuestions } from '../data/quiz'
 import { shuffle } from '../utils/shuffle'
 import { useBookmarks } from '../hooks/useBookmarks'
@@ -157,8 +157,15 @@ export default function QuizEngine({ onComplete }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Progress bar */}
+      {/* Progress bar + exit */}
       <div className="flex items-center gap-2">
+        <button
+          onClick={() => setMode('select')}
+          className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 transition-colors"
+          title="退出测验"
+        >
+          <LogOut size={18} />
+        </button>
         <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
           <div
             className="h-full bg-primary-500 rounded-full transition-all duration-300"
