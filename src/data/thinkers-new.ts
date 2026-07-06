@@ -1,0 +1,258 @@
+import type { Thinker } from '../types'
+
+// New thinkers from 后现代西方社会学理论 (刘少杰), 当代西方文艺理论 (朱立元), 西方政治哲学史 (周濂等)
+export const newThinkers: Thinker[] = [
+  // === 后现代西方社会学理论 ===
+  {
+    id: 'bourdieu', name: '皮埃尔·布迪厄', nameEn: 'Pierre Bourdieu', years: '1930-2002', nationality: '法国',
+    avatar: '📊', schools: ['postmodern-sociology', 'western-marxism'],
+    oneLiner: '场域、惯习、资本——社会再生产的三位一体，揭示文化如何巩固阶级',
+    biography: '布迪厄是20世纪后半叶最具影响力的社会学家之一。他试图超越"结构vs行动"的社会学经典二元对立，提出"生成结构主义"（genetic structuralism），以"惯习"（habitus）概念来理解社会结构如何内化为个人的"第二天性"却又不是机械决定论。他的"文化资本"和"符号暴力"概念深刻揭示了教育系统如何把阶级的不平等"合法化"为天赋的差异。',
+    keyIdeas: [
+      '场域（Field）：社会由多个相对自主的"场域"构成（艺术场、学术场、政治场等），每个场域有自己的规则和资本形式',
+      '惯习（Habitus）：被社会结构塑造的持久的性情倾向系统，既不是完全自由的"选择"也不是机械的"被决定"',
+      '文化资本（Cultural Capital）：以教育文凭、文化品味、谈吐方式等形式存在的资本——它把阶级差异"自然化"为天赋差异',
+      '符号暴力（Symbolic Violence）：通过定义什么是"合法的"文化、语言、品味，统治阶级将自己的标准强加为"普遍标准"',
+      '区隔（Distinction）：审美品味不是"天然的"——它是阶级地位的文化标记。所谓"好品味"无非是统治阶级的品味',
+    ],
+    majorWorks: ['《区隔：品味判断的社会批判》(1979)', '《实践感》(1980)', '《国家精英》(1989)', '《帕斯卡尔式的沉思》(1997)'],
+    quotes: [{ text: '社会学是一场格斗运动。', source: '访谈' }],
+    relatedThinkers: [
+      { id: 'althusser', relation: 'influenced_by' }, { id: 'foucault', relation: 'contemporary' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'giddens', name: '安东尼·吉登斯', nameEn: 'Anthony Giddens', years: '1938-', nationality: '英国',
+    avatar: '🔄', schools: ['postmodern-sociology'],
+    oneLiner: '结构化理论——社会结构既限制行动，又是行动的结果；现代性的后果是时空的"脱嵌"',
+    biography: '吉登斯是当代英国最重要的社会学家。他的"结构化理论"试图超越社会学中"结构决定论"与"行动自由论"的传统对立：社会结构不是独立于行动者的外在"框架"，而是持续被行动者的实践所"再生产"出来的——同时这些结构也是行动者行动的条件。他关于"现代性的后果"和"第三条道路"的论述深刻影响了当代社会学和政治学。',
+    keyIdeas: [
+      '结构化（Structuration）：结构既是行动的"媒介"也是行动的"结果"——二者不是对立的而是"二重性"的',
+      '脱嵌（Disembedding）：现代社会将社会关系从本地语境中"拔出来"，跨越时空重新组织——金钱和专家系统是典型的脱嵌机制',
+      '本体性安全（Ontological Security）：人对世界的基本信任感——现代性对传统的破坏威胁了这种安全感',
+      '第三条道路（The Third Way）：超越传统左派的国家干预与传统右派的自由放任——影响了克林顿、布莱尔的政策',
+    ],
+    majorWorks: ['《社会的构成》(1984)', '《现代性的后果》(1990)', '《第三条道路》(1998)'],
+    quotes: [{ text: '现代性是一场失控的巨型压路机。', source: '《现代性的后果》' }],
+    relatedThinkers: [
+      { id: 'habermas', relation: 'contemporary' }, { id: 'beck', relation: 'contemporary' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'bauman', name: '齐格蒙特·鲍曼', nameEn: 'Zygmunt Bauman', years: '1925-2017', nationality: '波兰/英国',
+    avatar: '💧', schools: ['postmodern-sociology', 'postmodernism'],
+    oneLiner: '流动的现代性——一切坚固的东西都烟消云散了，不确定性是唯一确定的事',
+    biography: '鲍曼是后现代社会学最敏锐的观察者。他用"液态现代性"（liquid modernity）这个生动的隐喻来捕捉当代社会的核心特征：传统、制度、关系和身份都不再是"固态的"——它们融化成了流动的、短暂的、不可靠的形式。爱情变成了"连接"而非"承诺"，工作变成了"项目"而非"职业"，我们是"没有羁绊的个人"——但这自由也带来了前所未有的焦虑。',
+    keyIdeas: [
+      '液态现代性（Liquid Modernity）：一切坚固的东西——制度、关系、身份——都在"熔化"，不确定性成为常态',
+      '消费社会与"废弃的生命"：在消费社会中，人本身也变成了可弃置的物品——"多余的人"',
+      '液态的爱（Liquid Love）：现代关系是不愿承诺的"连接"——人们想要轻松的亲密但不要负担',
+      '陌生人社会学：在大城市的匿名人群中，我们如何与陌生人共存——这是一个伦理挑战',
+    ],
+    majorWorks: ['《现代性与大屠杀》(1989)', '《液态现代性》(2000)', '《液态的爱》(2003)', '《废弃的生命》(2004)'],
+    quotes: [{ text: '在现代性中，一切坚固的东西都烟消云散了——马克思说。在液态现代性中，烟消云散的是"烟消云散"本身。', source: '《液态现代性》' }],
+    relatedThinkers: [
+      { id: 'baudrillard', relation: 'contemporary' }, { id: 'beck', relation: 'contemporary' },
+    ],
+    difficulty: 1,
+  },
+  {
+    id: 'beck', name: '乌尔里希·贝克', nameEn: 'Ulrich Beck', years: '1944-2015', nationality: '德国',
+    avatar: '⚠️', schools: ['postmodern-sociology'],
+    oneLiner: '风险社会——现代化的副作用正在成为社会的主轴',
+    biography: '贝克以"风险社会"概念闻名于世。他的核心论点：在古典工业社会中，主要问题是"财富如何分配"；在后工业的"风险社会"中，主要问题变成了"风险如何分配"——而风险的分配逻辑与财富的分配逻辑不同：污染、气候变化、核威胁最终不受阶级界限——在风险面前，人人平等（虽然富人仍然可以"购买"更多的安全）。',
+    keyIdeas: [
+      '风险社会（Risk Society）：现代社会的主要问题从"财富的生产"转变为"风险的管理"',
+      '反思性现代化（Reflexive Modernization）：现代化发展到一定阶段后开始"反思自身"——科学和技术的副作用变成了科学的"首要研究对象"',
+      '个体化（Individualization）：传统阶级认同和家庭结构被"个体化"进程瓦解——个人从传统中"解放"，但也丧失了传统的安全网',
+      '"坏的风险" vs "好的风险"：经济风险是有益的激励，但生态风险和核风险是不可逆的"坏的风险"',
+    ],
+    majorWorks: ['《风险社会》(1986)', '《反思性现代化》(1994)', '《世界主义的欧洲》(2004)'],
+    quotes: [{ text: '在风险社会中，现代化的副作用正在成为现代化的首要问题。', source: '《风险社会》' }],
+    relatedThinkers: [
+      { id: 'giddens', relation: 'contemporary' }, { id: 'bauman', relation: 'contemporary' },
+    ],
+    difficulty: 2,
+  },
+  // === 当代西方文艺理论 ===
+  {
+    id: 'eagleton', name: '特里·伊格尔顿', nameEn: 'Terry Eagleton', years: '1943-', nationality: '英国',
+    avatar: '✍️', schools: ['literary-theory', 'western-marxism'],
+    oneLiner: '一切批评都是政治的——文学理论不应该躲在"纯美学"的象牙塔里',
+    biography: '伊格尔顿是当代最著名的马克思主义文学批评家之一。他的《文学理论导论》（1983）可能是全球文学系最广泛使用的入门教材。他的核心立场是：文学理论从来不是"中立的"方法论——每一种理论背后都有政治和意识形态的预设。他试图将阿尔都塞的意识形态理论、本雅明的艺术政治化与英国的文化研究传统融合起来。',
+    keyIdeas: [
+      '文学理论的政治性：声称"无政治立场"本身就是政治立场——它默认维持现状的合法性',
+      '文学是意识形态的生产：文学形式不只是"风格选择"——它本身就在"生产"一种看待世界的方式',
+      '批评的功能：批评家的任务不是"欣赏"文学，而是揭示文学文本如何"操作"意识形态',
+    ],
+    majorWorks: ['《文学理论导论》(1983)', '《审美意识形态》(1990)', '《理论之后》(2003)'],
+    quotes: [{ text: '理论是一个永远无法完成的工作——因为它的对象（资本主义）远未完成。', source: '《理论之后》' }],
+    relatedThinkers: [
+      { id: 'althusser', relation: 'influenced_by' }, { id: 'benjamin', relation: 'influenced_by' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'jameson', name: '弗雷德里克·詹姆逊', nameEn: 'Fredric Jameson', years: '1934-', nationality: '美国',
+    avatar: '🏗️', schools: ['literary-theory', 'western-marxism', 'postmodernism'],
+    oneLiner: '后现代主义是晚期资本主义的文化逻辑——拼贴和怀旧掩盖了历史的消失',
+    biography: '詹姆逊是当代西方马克思主义最重要的文化理论家。他的《后现代主义，或晚期资本主义的文化逻辑》(1991)是将经济分析与文化批评结合起来的典范之作。他论证：后现代主义不是随意的"风格选择"，而是资本主义第三阶段（跨国/晚期资本主义）在文化层面的必然表现。',
+    keyIdeas: [
+      '晚期资本主义的文化逻辑：现实主义=市场资本主义；现代主义=垄断资本主义；后现代主义=跨国资本主义',
+      '深度感的消失：后现代文化不再区分"表面"和"深层"——一切都被压扁为表面效应',
+      '拼贴（Pastiche）vs 戏仿（Parody）：后现代艺术不再有"嘲讽"的对象——只有无目的的拼贴',
+      '历史的怀旧化：过去不再被"理解"——它被变成一系列可供消费的风格元素',
+      '认知测绘（Cognitive Mapping）：在无法被个体经验把握的全球资本主义中，我们需要一种新的"位置感"',
+    ],
+    majorWorks: ['《后现代主义，或晚期资本主义的文化逻辑》(1991)', '《政治无意识》(1981)', '《全球化与政治策略》(2000)'],
+    quotes: [{ text: '今天比以往任何时候都更容易想象地球的彻底毁灭，而不是资本主义的微小改变。', source: '各处' }],
+    relatedThinkers: [
+      { id: 'baudrillard', relation: 'contemporary' }, { id: 'adorno', relation: 'influenced_by' },
+    ],
+    difficulty: 3,
+  },
+  {
+    id: 'said', name: '爱德华·赛义德', nameEn: 'Edward Said', years: '1935-2003', nationality: '巴勒斯坦/美国',
+    avatar: '🌍', schools: ['postcolonial-theory'],
+    oneLiner: '东方主义——西方关于"东方"的知识是殖民权力的共谋',
+    biography: '赛义德的《东方主义》(1978)是后殖民理论的奠基之作。他的核心论点：西方关于"东方"的学术研究（东方学）从来不是中立的"知识"——它是在殖民主义框架内生产出来的，并且反过来强化了殖民主义的合法性。东方被描绘为"神秘的""非理性的""女性化的""落后的"——这些知识的"真伪"不是赛义德关心的重点，他关心的核心问题是：权力如何通过知识来建构"我们"与"他们"的区分。',
+    keyIdeas: [
+      '东方主义（Orientalism）：一套知识-权力装置，将"东方"建构为西方的"他者"——可研究的、可统治的、需要被"文明化"的对象',
+      '想象的地理（Imaginative Geography）：通过话语建构"我们"与"他们"之间的边界——这些边界不是自然的地理，而是权力的话语效果',
+      '对位阅读（Contrapuntal Reading）：在阅读经典文本时同时阅读殖民地"另一方"的声音——简·奥斯汀的英国乡村与加勒比奴隶种植园是同一个帝国的两面',
+    ],
+    majorWorks: ['《东方主义》(1978)', '《文化与帝国主义》(1993)', '《知识分子论》(1994)'],
+    quotes: [{ text: '东方是欧洲文明最深刻、最常出现的"他者"形象。', source: '《东方主义》' }],
+    relatedThinkers: [
+      { id: 'foucault', relation: 'influenced_by' }, { id: 'spivak', relation: 'contemporary' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'spivak', name: '佳亚特里·斯皮瓦克', nameEn: 'Gayatri Spivak', years: '1942-', nationality: '印度',
+    avatar: '🗣️', schools: ['postcolonial-theory', 'poststructuralism'],
+    oneLiner: '属下不能说话——被压迫者的话语总是被知识-权力机制所中介',
+    biography: '斯皮瓦克是后殖民理论最具哲学深度的思想家。她将德里达的解构、马克思的政治经济学和第三世界女性主义融合在一起。她最著名的论文《属下能说话吗？》(1988)追问了一个尖锐的问题：在同情的西方知识分子"替"被压迫者说话时，被压迫者真正的声音是否被听到了——还是被"代表"了？',
+    keyIdeas: [
+      '属下（Subaltern）：葛兰西概念的改造——不仅是阶级上的从属，更是被剥夺了一切"被听见"的可能性的群体',
+      '属下不能说话：不是属下"不发出声音"——而是属下发出的声音不被"听见"，因为它不被现有的知识-话语体制承认为"有意义的话语"',
+      '战略性本质主义（Strategic Essentialism）：在政治斗争中暂时使用"印度女性""工人"等固定身份标签是有用的——但必须同时意识到这些身份是"建构"而非"本质"',
+    ],
+    majorWorks: ['《属下能说话吗？》(1988)', '《后殖民理性批判》(1999)', '《翻译的政治》(1993)'],
+    quotes: [{ text: '属下不能说话。', source: '《属下能说话吗？》' }],
+    relatedThinkers: [
+      { id: 'derrida', relation: 'influenced_by' }, { id: 'said', relation: 'contemporary' },
+    ],
+    difficulty: 3,
+  },
+  // === 西方政治哲学史 ===
+  {
+    id: 'berlin', name: '以赛亚·伯林', nameEn: 'Isaiah Berlin', years: '1909-1997', nationality: '英国',
+    avatar: '🦊', schools: ['liberalism', 'political-philosophy'],
+    oneLiner: '消极自由与积极自由——自由不是单一的，两种自由可能相互冲突',
+    biography: '伯林是20世纪最具影响力的自由主义思想家之一。他1958年的演讲《两种自由概念》是政治哲学史上被引用最多的文本之一。他区分了"消极自由"（不被他人干涉的范围）和"积极自由"（成为自己的主人的能力），并警告说：积极自由常常被滥用——从"使人自由"变成了"强迫人自由"——这是极权主义的逻辑。',
+    keyIdeas: [
+      '消极自由（Negative Liberty）：不被他人干涉——"别人可以在多大程度上不干涉我"',
+      '积极自由（Positive Liberty）：自我主宰——"我是我自己的主人"——但危险在于，你可能会被"更高的自我"所强迫',
+      '价值多元论（Value Pluralism）：没有一个人可以同时实现所有值得追求的价值——自由与平等、正义与仁慈之间可能存在无法消解的冲突',
+      '刺猬与狐狸：思想家分为两类——刺猬知道一件大事，狐狸知道许多小事。伯林自认为是狐狸',
+    ],
+    majorWorks: ['《两种自由概念》(1958)', '《反潮流》(1979)', '《俄国思想家》(1978)'],
+    quotes: [{ text: '消极自由关注的是：政府在多大程度上干涉我？积极自由关注的是：谁在统治我？', source: '《两种自由概念》' }],
+    relatedThinkers: [
+      { id: 'rawls', relation: 'influenced' }, { id: 'nozick', relation: 'influenced' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'hayek', name: '弗里德里希·哈耶克', nameEn: 'Friedrich Hayek', years: '1899-1992', nationality: '奥地利/英国',
+    avatar: '🛤️', schools: ['liberalism', 'political-philosophy'],
+    oneLiner: '自发秩序——社会不是被设计的，而是无数个体行动意外演化的结果',
+    biography: '哈耶克是20世纪自由至上主义最重要的理论家。他的核心论证是反对"建构论理性主义"——那种认为社会制度可以由一个中央计划者"理性设计"的妄想。市场、语言、法律、货币——这些都是"自发秩序"：是无数个体行动的无意后果，而非任何人的有意设计。任何试图用"计划"取代"自发秩序"的企图——不管是社会主义还是福利国家——都必然走向"通往奴役之路"。',
+    keyIdeas: [
+      '自发秩序（Spontaneous Order/Catallaxy）：社会制度的形成像"被踩出的小路"——没有一个人设计它，但每个人都无意识地参与了它的创造',
+      '知识问题（The Knowledge Problem）：中央计划者永远不可能掌握分散在无数个体中的"局部知识"——这些只有当事人才知道的信息',
+      '价格信号：价格是"知识的经济"——它把无数人的局部信息压缩成一个可读的数字',
+      '通往奴役之路：任何试图用中央计划取代市场经济的国家最终都会走向极权主义',
+    ],
+    majorWorks: ['《通往奴役之路》(1944)', '《自由秩序原理》(1960)', '《法律、立法与自由》(1973-1979)'],
+    quotes: [{ text: '通往地狱的道路，通常是由善意铺成的。', source: '《通往奴役之路》' }],
+    relatedThinkers: [
+      { id: 'nozick', relation: 'influenced' }, { id: 'rawls', relation: 'opposed' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'macintyre', name: '阿拉斯代尔·麦金太尔', nameEn: 'Alasdair MacIntyre', years: '1929-', nationality: '英国/美国',
+    avatar: '📖', schools: ['communitarianism', 'political-philosophy'],
+    oneLiner: '德性之后——现代道德已经碎片化，我们需要回到亚里士多德的德性传统',
+    biography: '麦金太尔是社群主义最具道德深度的思想家。他的《德性之后》(1981)对现代道德哲学发动了毁灭性的批判：启蒙运动试图为道德提供一个"理性的"基础——但它失败了，因为它抛弃了亚里士多德的"目的论"框架（人"是"什么→人"应该成为"什么）。失去了这个框架后，现代人的道德语言变成了破碎的"道德碎片"的拼贴——我们使用着"权利""正义""善"这些词，但我们之间没有一套共享的道德词汇可以合理地辨析它们。',
+    keyIdeas: [
+      '道德碎片化：现代社会中，道德争论是"不可通约的"——双方都使用道德词汇，但无法进行有意义的对话，因为他们共享的道德前提已经瓦解',
+      '德性传统：道德不是一套抽象的"规则"——它根植于特定的共同体叙事和传统之中',
+      '实践（Practice）：德性是在具体的"实践"中培养出来的——木匠、医生、战士都有自己的"德性标准"——这些标准内在于实践本身而非"外在规则"',
+      '叙事统一性：一个人的生命不是一个"点"的序列——它是一个"故事"，而故事需要"统一性"——这就是德性在个体层面的意义',
+    ],
+    majorWorks: ['《德性之后》(1981)', '《谁之正义？何种合理性？》(1988)', '《依赖的理性动物》(1999)'],
+    quotes: [{ text: '现代道德的语言处于严重的失序状态。', source: '《德性之后》' }],
+    relatedThinkers: [
+      { id: 'sandel', relation: 'contemporary' }, { id: 'taylor', relation: 'contemporary' },
+    ],
+    difficulty: 3,
+  },
+  {
+    id: 'pettit', name: '菲利普·佩蒂特', nameEn: 'Philip Pettit', years: '1945-', nationality: '爱尔兰',
+    avatar: '🛡️', schools: ['republicanism', 'political-philosophy'],
+    oneLiner: '无支配的自由——自由不是"没人干涉我"，而是"没人能任意干涉我"',
+    biography: '佩蒂特是当代共和主义复兴的领军人物。他提出了第三种自由概念——不仅超越伯林的"消极/积极"二分，也重塑了民主理论。佩蒂特论证：消极自由只关心"实际干涉"，而忽略了"支配"——一个奴隶如果碰巧主人不干涉他，他仍然是奴隶。自由不在于"事实上没被干涉"，而在于"没有人具有任意干涉你的权力"。',
+    keyIdeas: [
+      '无支配自由（Freedom as Non-Domination）：自由=不受任意干涉的支配——即使主人"善良"地不干涉你，你仍然是不自由的',
+      '第三种自由：超越了伯林的消极自由（不被干涉）和积极自由（自我主宰）——自由是一种"社会地位"而非心理状态',
+      '竞赛性民主（Contestatory Democracy）：民主不只是"同意"，更是"质疑"——公民应当有能力质疑和挑战政府的决定',
+    ],
+    majorWorks: ['《共和主义》(1997)', '《论人民的权利》(2012)', '《共同善的政治》(2004)'],
+    quotes: [{ text: '自由不是没被干涉——而是没有人能不经过你的同意就干涉你。', source: '《共和主义》' }],
+    relatedThinkers: [
+      { id: 'berlin', relation: 'influenced_by' }, { id: 'skinner', relation: 'contemporary' },
+    ],
+    difficulty: 2,
+  },
+  {
+    id: 'bakhtin', name: '米哈伊尔·巴赫金', nameEn: 'Mikhail Bakhtin', years: '1895-1975', nationality: '俄国/苏联',
+    avatar: '🎭', schools: ['literary-theory'],
+    oneLiner: '复调与狂欢——小说是多声部的对话，而非作者独白',
+    biography: '巴赫金是20世纪最具原创性的文艺理论家之一。他在斯大林时期的苏联边缘化处境中完成了惊人的思想创造。他的"复调"理论论证：陀思妥耶夫斯基的小说不是作者"独白式"地传达某个统一真理——而是多个独立而不相融合的声音和意识之间的"对话"。他的"狂欢化"理论揭示了民间文化中颠覆官方秩序的诙谐传统。',
+    keyIdeas: [
+      '复调（Polyphony）：小说中每一个角色都是独立而不相融合的"声音"——作者不是上帝，而是"对话"的参与者',
+      '狂欢化（Carnivalization）：中世纪狂欢节——等级被暂时颠覆、严肃被笑声消解——是对官方秩序的文化抵抗',
+      '对话性（Dialogism）：一切言说都内在地是"对话性"的——它总是在回应过去的话语并预期未来的回应',
+      '时空体（Chronotope）：文学中时间和空间不可分割的联结——不同的体裁有不同的时空体',
+    ],
+    majorWorks: ['《陀思妥耶夫斯基诗学问题》(1929/1963)', '《拉伯雷和他的世界》(1965)', '《对话的想象》(1975)'],
+    quotes: [{ text: '语言只在对话的交往中活着。', source: '《陀思妥耶夫斯基诗学问题》' }],
+    relatedThinkers: [
+      { id: 'derrida', relation: 'influenced' },
+    ],
+    difficulty: 3,
+  },
+  {
+    id: 'walzer', name: '迈克尔·沃尔泽', nameEn: 'Michael Walzer', years: '1935-', nationality: '美国',
+    avatar: '⚖️', schools: ['communitarianism', 'political-philosophy'],
+    oneLiner: '复合平等——正义不是"所有领域一律平等"，而是每个领域有自己的分配规则且互不支配',
+    biography: '沃尔泽是社群主义政治哲学的重要代表，也是关于"正义战争"理论的最权威学者。他在《正义诸领域》(1983)中提出"复合平等"理论——批判罗尔斯的"统一"正义原则。沃尔泽论证：不同的社会物品（财富、权力、教育、健康、荣誉）属于不同的"分配领域"——每个领域有自己的"正义标准"，而真正的"不公正"是某一个领域的优势"越界"支配了其他领域（比如金钱"买"到了政治权力）。',
+    keyIdeas: [
+      '复合平等（Complex Equality）：正义不是"所有人在所有领域都平等"——而是在每一个社会物品的分配领域中，没有人因为其在另一个领域的优势而占据支配地位',
+      '分配领域（Spheres of Justice）：财富、官职、教育、健康、荣誉——每个领域有自己内部合理的分配标准',
+      '越界（Tyranny）：不正义=某一个领域的逻辑"殖民"了另一个领域——最典型的是"金钱买权力"或"权力决定真理"',
+      '正义战争理论（Just War Theory）：战争不是"全部允许"也不是"全部禁止"——有开战正义（jus ad bellum）和作战正义（jus in bello）的严格标准',
+    ],
+    majorWorks: ['《正义诸领域》(1983)', '《正义与非正义战争》(1977)', '《阐释与社会批评》(1987)'],
+    quotes: [{ text: '正义是社会诸领域的独立自主——没有一个领域的善可以合法地兑换成另一个领域的善。', source: '《正义诸领域》' }],
+    relatedThinkers: [
+      { id: 'rawls', relation: 'contemporary' }, { id: 'sandel', relation: 'contemporary' },
+    ],
+    difficulty: 2,
+  },
+]

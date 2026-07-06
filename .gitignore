@@ -1,0 +1,7 @@
+node_modules
+dist
+*.epub
+*.pdf
+*.mobi
+.DS_Store
+*.local
