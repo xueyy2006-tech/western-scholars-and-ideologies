@@ -1,10 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import { ReactNode, useState, useEffect } from 'react'
-import { LayoutDashboard, Network, Brain, FileQuestion, BookOpen, Star, Sun, Moon } from 'lucide-react'
+import { LayoutDashboard, Brain, FileQuestion, BookOpen, Star, Sun, Moon } from 'lucide-react'
 
 const tabs = [
   { path: '/', label: '首页', icon: LayoutDashboard },
-  { path: '/tree', label: '知识树', icon: Network },
   { path: '/flashcards', label: '刷题', icon: Brain },
   { path: '/quiz', label: '测验', icon: FileQuestion },
   { path: '/thinkers', label: '词典', icon: BookOpen },

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Brain, Network, FileQuestion, BookOpen, Star, TrendingUp, Flame } from 'lucide-react'
+import { Brain, FileQuestion, BookOpen, Star, TrendingUp, Flame } from 'lucide-react'
 import ProgressRing from '../components/ProgressRing'
 import QuoteBanner from '../components/QuoteBanner'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
@@ -19,7 +19,6 @@ export default function Dashboard() {
 
   const quickLinks = [
     { path: '/flashcards', label: '开始刷题', icon: Brain, color: 'from-primary-500 to-primary-700', desc: `${stats.untried} 张新卡待学习` },
-    { path: '/tree', label: '知识树', icon: Network, color: 'from-accent-500 to-accent-700', desc: '查看知识体系全貌' },
     { path: '/quiz', label: '测验挑战', icon: FileQuestion, color: 'from-emerald-500 to-emerald-700', desc: `${progress.quizScores.length} 次完成测验` },
     { path: '/thinkers', label: '思想家词典', icon: BookOpen, color: 'from-amber-500 to-amber-700', desc: `${thinkers.length} 位思想家` },
     { path: '/bookmarks', label: '我的收藏', icon: Star, color: 'from-rose-500 to-pink-600', desc: '收藏 + 错题本' },
