@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, X, BookOpen, Lightbulb, Quote, ChevronRight } from 'lucide-react'
+import { Search, X, BookOpen, Lightbulb, Quote, ChevronRight, Filter } from 'lucide-react'
 import { thinkers, getThinkerById } from '../data/thinkers'
-import { getSchoolById } from '../data/schools'
+import { getSchoolById, schools } from '../data/schools'
 import SearchBar from '../components/SearchBar'
 import type { Thinker } from '../types'
 
@@ -10,6 +10,7 @@ export default function ThinkersPage() {
   const [search, setSearch] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [difficultyFilter, setDifficultyFilter] = useState<number | null>(null)
+  const [schoolFilter, setSchoolFilter] = useState<string | null>(null)
 
   const filtered = useMemo(() => {
     let result = thinkers
@@ -25,8 +26,18 @@ export default function ThinkersPage() {
     if (difficultyFilter !== null) {
       result = result.filter(t => t.difficulty === difficultyFilter)
     }
+    if (schoolFilter !== null) {
+      result = result.filter(t => t.schools.includes(schoolFilter))
+    }
     return result
-  }, [search, difficultyFilter])
+  }, [search, difficultyFilter, schoolFilter])
+
+  // Count thinkers per school for badges
+  const schoolCounts = useMemo(() => {
+    const counts: Record<string, number> = {}
+    schools.forEach(s => { counts[s.id] = thinkers.filter(t => t.schools.includes(s.id)).length })
+    return counts
+  }, [])
 
   const selectedThinker = selectedId ? getThinkerById(selectedId) : null
 
@@ -40,7 +51,7 @@ export default function ThinkersPage() {
       <SearchBar value={search} onChange={setSearch} placeholder="搜索姓名、学派、关键词..." />
 
       {/* Difficulty filter */}
-      <div className="flex gap-1.5">
+      <div className="flex gap-1.5 flex-wrap">
         {[
           { d: null, label: '全部' },
           { d: 1, label: '入门' },
@@ -59,6 +70,34 @@ export default function ThinkersPage() {
             {f.label}
           </button>
         ))}
+      </div>
+
+      {/* School filter */}
+      <div>
+        <label className="text-xs text-gray-500 font-medium mb-1.5 flex items-center gap-1">
+          <Filter size={12} /> 学派筛选
+          {schoolFilter && (
+            <button onClick={() => setSchoolFilter(null)} className="ml-1 text-primary-500 hover:underline">(清除)</button>
+          )}
+        </label>
+        <div className="flex flex-wrap gap-1.5">
+          {schools.map(school => (
+            <button
+              key={school.id}
+              onClick={() => setSchoolFilter(schoolFilter === school.id ? null : school.id)}
+              className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all flex items-center gap-1 ${
+                schoolFilter === school.id
+                  ? 'text-white shadow-md scale-105'
+                  : 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+              }`}
+              style={schoolFilter === school.id ? { backgroundColor: school.color } : {}}
+            >
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: school.color }} />
+              {school.name}
+              <span className="opacity-60">({schoolCounts[school.id]})</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Thinker Grid */}
@@ -81,9 +120,19 @@ export default function ThinkersPage() {
               {thinker.schools.slice(0, 2).map(sid => {
                 const school = getSchoolById(sid)
                 return school ? (
-                  <span key={sid} className="text-[10px] px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                  <button
+                    key={sid}
+                    onClick={(e) => { e.stopPropagation(); setSchoolFilter(schoolFilter === school.id ? null : school.id) }}
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full transition-all ${
+                      schoolFilter === school.id
+                        ? 'text-white'
+                        : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+                    }`}
+                    style={schoolFilter === school.id ? { backgroundColor: school.color } : {}}
+                    title={`筛选：${school.name}`}
+                  >
                     {school.name}
-                  </span>
+                  </button>
                 ) : null
               })}
             </div>
