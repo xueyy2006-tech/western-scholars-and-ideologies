@@ -1,16 +1,16 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useState, useEffect } from 'react'
 import {
   ReactFlow,
   Background,
   Controls,
   useNodesState,
   useEdgesState,
-  Node,
+  type Node,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { treeNodes, treeEdges } from '../data/relationships'
 import ThinkerDrawer from './ThinkerDrawer'
-import { Filter } from 'lucide-react'
+import { Filter, AlertTriangle } from 'lucide-react'
 
 const nodeTypes = {
   school: ({ data }: any) => (
@@ -31,8 +31,20 @@ const nodeTypes = {
 }
 
 export default function KnowledgeTree() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(treeNodes as any)
-  const [edges, setEdges, onEdgesChange] = useEdgesState(treeEdges as any)
+  const [error, setError] = useState<string | null>(null)
+
+  let nodes: any[], setNodes: any, onNodesChange: any
+  let edges: any[], setEdges: any, onEdgesChange: any
+  try {
+    [nodes, setNodes, onNodesChange] = useNodesState(treeNodes as any)
+    ;[edges, setEdges, onEdgesChange] = useEdgesState(treeEdges as any)
+  } catch (e: any) {
+    nodes = []; edges = []
+    setNodes = () => {}; onNodesChange = () => {}
+    setEdges = () => {}; onEdgesChange = () => {}
+    useEffect(() => { if (!error) setError('ReactFlow 初始化失败: ' + String(e)) }, [])
+  }
+
   const [selectedRefId, setSelectedRefId] = useState<string | null>(null)
   const [selectedType, setSelectedType] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'school' | 'thinker' | 'concept'>('all')
@@ -65,7 +77,14 @@ export default function KnowledgeTree() {
   ] as const
 
   return (
-    <div className="relative w-full h-[70vh] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+    <div className="relative w-full rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900" style={{ width: '100%', height: '70vh', minHeight: '450px' }}>
+      {error && (
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-xl p-4 text-sm text-red-700 dark:text-red-300 max-w-sm text-center">
+          <AlertTriangle className="mx-auto mb-2" size={24} />
+          <p className="font-bold">知识树加载失败</p>
+          <p className="text-xs mt-1 opacity-70">{error}</p>
+        </div>
+      )}
       {/* Filter bar */}
       <div className="absolute top-3 left-3 z-10 flex gap-1 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-lg p-1 border border-gray-200 dark:border-gray-700">
         <Filter size={14} className="self-center ml-1 text-gray-400" />

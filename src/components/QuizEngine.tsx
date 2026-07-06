@@ -157,21 +157,27 @@ export default function QuizEngine({ onComplete }: Props) {
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Progress bar + exit */}
-      <div className="flex items-center gap-3 mb-2">
-        <button
-          onClick={() => { if (confirm('确定退出测验？当前进度将丢失。')) setMode('select') }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs font-medium hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
-        >
-          <LogOut size={14} /> 退出
-        </button>
-        <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-primary-500 rounded-full transition-all duration-300"
-            style={{ width: `${(currentIndex / questions.length) * 100}%` }}
-          />
+      {/* Top bar: exit + progress */}
+      <div className="sticky top-0 z-10 bg-white/90 dark:bg-gray-950/90 backdrop-blur-sm -mx-4 px-4 py-2 border-b border-gray-200 dark:border-gray-800">
+        <div className="flex items-center gap-3 max-w-5xl mx-auto">
+          <button
+            onClick={() => setMode('select')}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-bold transition-colors shadow-md"
+          >
+            <LogOut size={16} /> 退出测验
+          </button>
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
+              <div className="flex-1 h-2.5 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full transition-all duration-300"
+                  style={{ width: `${(currentIndex / questions.length) * 100}%` }}
+                />
+              </div>
+              <span className="text-xs text-gray-500 font-mono font-bold">{currentIndex + 1}/{questions.length}</span>
+            </div>
+          </div>
         </div>
-        <span className="text-xs text-gray-500 font-mono">{currentIndex + 1}/{questions.length}</span>
       </div>
 
       <AnimatePresence mode="wait">
