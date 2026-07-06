@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { ReactNode, useState, useEffect } from 'react'
 import { LayoutDashboard, Network, Brain, FileQuestion, BookOpen, Star, Sun, Moon } from 'lucide-react'
 
@@ -12,7 +12,6 @@ const tabs = [
 ]
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const location = useLocation()
   const [dark, setDark] = useState(() => {
     const saved = localStorage.getItem('dark-mode')
     return saved ? saved === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -23,10 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     localStorage.setItem('dark-mode', String(dark))
   }, [dark])
 
-  // Hide bottom nav on quiz page (works with both BrowserRouter and HashRouter)
-  const currentPath = location.hash ? location.hash.replace('#', '') || '/' : location.pathname
-  const hideNav = currentPath === '/quiz'
-  const hidden = hideNav ? 'hidden' : ''
+  // Bottom nav always visible — quiz has its own exit button now
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors">
@@ -52,7 +48,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </main>
 
       {/* Bottom Tab Bar */}
-      <nav className={`fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800 ${hidden}`}>
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg border-t border-gray-200 dark:border-gray-800">
         <div className="max-w-5xl mx-auto px-2 flex justify-around">
           {tabs.map(tab => (
             <NavLink
