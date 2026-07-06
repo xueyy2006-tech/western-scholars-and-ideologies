@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Star, BookOpen, FileQuestion, Trash2, XCircle, Lightbulb, ChevronRight } from 'lucide-react'
 import { useBookmarks } from '../hooks/useBookmarks'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import { flashcards, getFlashcardById } from '../data/flashcards'
+import { allFlashcards as flashcards, getFlashcardById } from '../data/flashcards'
 import { allQuizQuestions } from '../data/quiz'
 
 type TabKey = 'bookmarks' | 'wrong-answers'

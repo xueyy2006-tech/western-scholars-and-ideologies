@@ -4,7 +4,7 @@ import ProgressRing from '../components/ProgressRing'
 import QuoteBanner from '../components/QuoteBanner'
 import { useSpacedRepetition } from '../hooks/useSpacedRepetition'
 import { useProgress } from '../hooks/useProgress'
-import { flashcards } from '../data/flashcards'
+import { allFlashcards as flashcards } from '../data/flashcards'
 import { thinkers } from '../data/thinkers'
 import { useEffect } from 'react'
 

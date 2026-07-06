@@ -101,10 +101,25 @@ export const flashcards: FlashCard[] = [
   },
 ]
 
+// Import extra flashcard sources
+import { thinker2Flashcards } from './flashcards-thinker2'
+import { schoolFlashcards } from './flashcards-schools'
+import { compareFlashcards } from './flashcards-compare2'
+import { finalFlashcards } from './flashcards-final'
+
+// Re-export combined array
+export const allFlashcards: FlashCard[] = [
+  ...flashcards,
+  ...thinker2Flashcards,
+  ...schoolFlashcards,
+  ...compareFlashcards,
+  ...finalFlashcards,
+]
+
 export function getFlashcardsByCategory(category: string): FlashCard[] {
-  return flashcards.filter(f => f.category === category)
+  return allFlashcards.filter(f => f.category === category)
 }
 
 export function getFlashcardById(id: string): FlashCard | undefined {
-  return flashcards.find(f => f.id === id)
+  return allFlashcards.find(f => f.id === id)
 }

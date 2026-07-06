@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { Filter } from 'lucide-react'
 import CardDeck from '../components/CardDeck'
-import { flashcards } from '../data/flashcards'
+import { allFlashcards as flashcards } from '../data/flashcards'
 import { schools } from '../data/schools'
 
 export default function FlashcardPage() {
