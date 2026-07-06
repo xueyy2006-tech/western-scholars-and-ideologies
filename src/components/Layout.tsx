@@ -23,8 +23,9 @@ export default function Layout({ children }: { children: ReactNode }) {
     localStorage.setItem('dark-mode', String(dark))
   }, [dark])
 
-  // Hide bottom nav on quiz page (fullscreen mode)
-  const hideNav = location.pathname === '/quiz'
+  // Hide bottom nav on quiz page (works with both BrowserRouter and HashRouter)
+  const currentPath = location.hash ? location.hash.replace('#', '') || '/' : location.pathname
+  const hideNav = currentPath === '/quiz'
   const hidden = hideNav ? 'hidden' : ''
 
   return (
