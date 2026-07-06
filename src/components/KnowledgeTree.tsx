@@ -1,8 +1,10 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import {
   ReactFlow,
   Background,
   Controls,
+  useNodesState,
+  useEdgesState,
   type Node,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
@@ -10,7 +12,6 @@ import { treeNodes, treeEdges } from '../data/relationships'
 import ThinkerDrawer from './ThinkerDrawer'
 import { Filter } from 'lucide-react'
 
-// Custom node component
 function SchoolNode({ data }: any) {
   return <div style={{ padding: '8px 16px', borderRadius: 12, background: 'linear-gradient(135deg, #ee4422, #ee6644)', color: 'white', fontSize: 14, fontWeight: 700, cursor: 'pointer', border: '2px solid rgba(238,68,34,0.5)' }}>{data.label}</div>
 }
@@ -24,24 +25,25 @@ function ConceptNode({ data }: any) {
 const nodeTypes = { school: SchoolNode, thinker: ThinkerNode, concept: ConceptNode }
 
 export default function KnowledgeTree() {
+  const [nodes, setNodes, onNodesChange] = useNodesState(treeNodes as any)
+  const [edges, setEdges, onEdgesChange] = useEdgesState(treeEdges as any)
   const [selectedRefId, setSelectedRefId] = useState<string | null>(null)
   const [selectedType, setSelectedType] = useState<string | null>(null)
   const [filter, setFilter] = useState<'all' | 'school' | 'thinker' | 'concept'>('all')
 
   const onNodeClick = useCallback((_: any, node: Node) => {
-    const refId = (node as any).data?.refId
-    const nType = (node as any).data?.type
+    const refId = (node as any).data?.refId || (node as any).refId
+    const nType = (node as any).data?.type || (node as any).type
     if (refId) { setSelectedRefId(refId); setSelectedType(nType) }
   }, [])
 
-  // Apply filter
-  const displayNodes = filter === 'all'
-    ? treeNodes
-    : treeNodes.map(n => ({ ...n, hidden: (n as any).type !== filter }))
+  const displayNodes = useMemo(() => {
+    if (filter === 'all') return nodes
+    return nodes.map(n => ({ ...n, hidden: (n as any).type !== filter }))
+  }, [nodes, filter])
 
   return (
     <div style={{ width: '100%', height: '70vh', minHeight: '450px', borderRadius: 16, overflow: 'hidden', border: '1px solid #d1d5db', background: 'white', position: 'relative' }}>
-      {/* Filter bar */}
       <div style={{ position: 'absolute', top: 12, left: 12, zIndex: 10, display: 'flex', gap: 4, background: 'rgba(255,255,255,0.9)', borderRadius: 8, padding: 4, border: '1px solid #e5e7eb' }}>
         <Filter size={14} style={{ alignSelf: 'center', marginLeft: 4, color: '#9ca3af' }} />
         {(['all', 'school', 'thinker', 'concept'] as const).map(key => (
@@ -53,8 +55,10 @@ export default function KnowledgeTree() {
       </div>
 
       <ReactFlow
-        defaultNodes={displayNodes as any}
-        defaultEdges={treeEdges as any}
+        nodes={displayNodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
         onNodeClick={onNodeClick}
         nodeTypes={nodeTypes}
         fitView
