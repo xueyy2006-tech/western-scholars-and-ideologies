@@ -158,13 +158,12 @@ export default function QuizEngine({ onComplete }: Props) {
   return (
     <div className="flex flex-col gap-4">
       {/* Progress bar + exit */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3 mb-2">
         <button
-          onClick={() => setMode('select')}
-          className="p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-400 hover:text-red-500 transition-colors"
-          title="退出测验"
+          onClick={() => { if (confirm('确定退出测验？当前进度将丢失。')) setMode('select') }}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs font-medium hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors"
         >
-          <LogOut size={18} />
+          <LogOut size={14} /> 退出
         </button>
         <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-800 rounded-full overflow-hidden">
           <div

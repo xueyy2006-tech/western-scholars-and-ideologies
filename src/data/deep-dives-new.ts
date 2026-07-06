@@ -1,3 +1,6 @@
+import type { DeepDiveEntry } from './deep-dives'
+
+export const newDeepDives: DeepDiveEntry[] = [
 
   // ===== CONCEPT DEEP-DIVES =====
   {

@@ -3,11 +3,9 @@ import {
   ReactFlow,
   Background,
   Controls,
-  MiniMap,
   useNodesState,
   useEdgesState,
   Node,
-  Edge,
 } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { treeNodes, treeEdges } from '../data/relationships'
@@ -103,17 +101,7 @@ export default function KnowledgeTree() {
         }}
       >
         <Background color="#94a3b8" gap={20} size={1} />
-        <Controls className="!rounded-lg !shadow-md !border-gray-200 dark:!border-gray-700" />
-        <MiniMap
-          className="!rounded-lg !shadow-md"
-          maskColor="rgba(0,0,0,0.1)"
-          nodeColor={(n) => {
-            const type = (n.data as any)?.type
-            if (type === 'school') return '#ee4422'
-            if (type === 'thinker') return '#5c7cfa'
-            return '#748ffc'
-          }}
-        />
+        <Controls />
       </ReactFlow>
 
       {/* Detail drawer */}
