@@ -5,6 +5,7 @@ import { useBookmarks } from '../hooks/useBookmarks'
 import DeepDive from './DeepDive'
 import { deepDives } from '../data/deep-dives'
 import { extraDeepDives } from '../data/deep-dives-extra'
+import { extraDeepDives2 } from '../data/deep-dives-extra2'
 import type { FlashCard as FlashCardType } from '../types'
 
 interface Props {
@@ -18,7 +19,7 @@ export default function FlashCard({ card, onResult, isFlipped, onFlip }: Props) 
   const [showHint, setShowHint] = useState(false)
   const { isBookmarked, toggleBookmark } = useBookmarks()
   const diveId = card.id.replace(/^fc-/, '')
-  const dive = deepDives.find(d => d.id === diveId) ?? extraDeepDives.find(d => d.id === diveId)
+  const dive = deepDives.find(d => d.id === diveId) ?? extraDeepDives.find(d => d.id === diveId) ?? extraDeepDives2.find(d => d.id === diveId)
 
   const difficultyLabel = card.difficulty === 1 ? '入门' : card.difficulty === 2 ? '进阶' : '硬核'
   const difficultyColor = card.difficulty === 1 ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400'
